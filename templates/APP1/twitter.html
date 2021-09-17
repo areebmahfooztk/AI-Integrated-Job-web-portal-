@@ -1,0 +1,92 @@
+
+{% load static %}
+{% block body %}
+<html>
+<head>
+<link rel="stylesheet"  href="{%  static  'APP1/CSS/emprof2.css'  %}">
+<div class="head">
+<br><h1><center>Personality Insights</center></h1>
+</div>
+<center><h1>{{ mem }}</h1></center>
+    <center><h1>{{ m }}</h1></center>
+
+
+ <center><table class="container">
+
+      <tr>
+          <th class="bod">No.</th>
+    <th class="bod">Name</th>
+    <th class="bod">Resume</th>
+    <th class="bod">Personality Traits</th>
+  </tr>
+    {% for twit in member  %}
+         <tr>
+        <td>{{ forloop.counter}}</td>
+    <td>{{ twit.Name}}</td>
+    <td>{{ twit.filepath }}</td>
+    <td><form action="{% url 'twitter3' %}" method="POST">
+         {% csrf_token %}
+        <input type="hidden" name="name" value="{{ twit.twitter_id}}">
+        {% if twit.twitter_id != '' %}
+        <input type="submit" class="load" value="load traits">
+         </form>
+        {% endif %}
+        {% endfor %}
+    </td>
+     </tr>
+    </table></center>
+
+<style>
+    table{
+        border-collapse: collapse;
+     width: 80%;
+	overflow: hidden;
+	box-shadow: white;
+    border-color: white;
+}
+body,td {
+    margin: 0;
+    background: white;
+    font-family: sans-serif;
+    font-weight: 100;
+    border: none;
+}
+th,
+td {
+    padding: 15px;
+    background-color:whitesmoke;
+    color: black;
+    border: none
+}
+.load{
+
+      background-color: dodgerblue;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 3px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.head{
+    color: dodgerblue;
+    font-family: "Times New Roman", Times, serif;
+}
+.bod
+{
+    background-color: lightskyblue;
+}
+
+
+</style>
+    </body>
+
+    </head>
+    </html>
+
+{% endblock %}

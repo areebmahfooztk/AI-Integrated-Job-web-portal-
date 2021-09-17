@@ -1,0 +1,93 @@
+{% block body %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<div class="g">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<br>
+<br>
+<div class="hd">
+<center><h1>Personality traits</h1></center>
+</div>
+
+<center><h1>{{ mem }}</h1></center>
+<br>
+    <div class="t">
+    {% if mem == 'ENFJ' %}
+        <center><h1>Extraversion ,Intution , Feeling , Judging </h1></center>
+
+    {% elif mem == 'ISTJ' %}
+        <center><h1>Introverion,Sensing ,Thinking , Judging</h1></center>
+    {% elif mem == 'INFJ' %}
+        <center><h1>Introversion , Intution , Feeling , Judging</h1></center>
+    {% elif mem == 'INTJ' %}
+         <center><h1>Introversion , Intution , Thinking , Judging</h1> </center>
+    {% elif mem == 'ISTP' %}
+         <center><h1>Introversion , Sensing , Thinking , Perception</h1></center>
+    {% elif mem == 'ESFJ' %}
+          <center><h1>Extraversion , Sensing , Feeling , Judging</h1></center>
+    {% elif mem == 'INFP' %}
+          <center><h1>Introversion , Intution , Feeling , Perception</h1></center>
+    {% elif mem == 'ESFP' %}
+         <center><h1>Extraversion , Sensing ,Feeling ,Perception</h1></center>
+    {% elif mem == 'ENFP' %}
+          <center><h1>Extraversion , Intution ,Feeling, Perception</h1></center>
+    {% elif mem == 'ESTP' %}
+          <center><h1>Extraversion , Sensing , Thinking, Perception</h1></center>
+    {% elif mem == 'ESTJ' %}
+          <center><h1>Extraversion , Sensing , Thinking, Judging</h1></center>
+    {% elif mem == 'ENTJ' %}
+          <center><h1>Extraversion ,Intution ,Thinking, Judging</h1></center>
+    {% elif mem == 'INTP' %}
+           <center><h1>Introversion ,Intution ,Thinking, Perception</h1></center>
+    {% elif mem == 'ISFJ' %}
+           <center><h1>Intution ,Sensing ,Feeling ,Judging</h1></center>
+    {% elif mem == 'ENTP' %}
+           <center><h1>Extraversion,Intution,Thinking ,Perception</h1></center>
+    {% endif %}
+    </div>
+<br>
+<div class="str">
+    <center><h1>{{ m }}</h1></center>
+</div>
+</div>
+
+
+<style>
+
+.g
+{
+    background-color: white;
+    margin: auto 10px;
+    width: auto;
+    height: 2000px;
+    position: fixed;
+}
+.t
+{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    color:darkred
+}
+.hd
+{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    color:white;
+    background-color: dodgerblue;
+}
+.str
+{
+   background-color: whitesmoke ;
+    width: auto;
+    height: 10px;
+
+}
+
+
+</style>
+{% endblock %}
+

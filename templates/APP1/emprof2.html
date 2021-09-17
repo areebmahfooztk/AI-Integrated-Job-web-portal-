@@ -1,0 +1,149 @@
+
+{% load static %}
+{% block body %}
+<html>
+<head>
+<link rel="stylesheet"  href="{%  static  'APP1/CSS/emprof2.css'  %}">
+<div class="head">
+<br><h1><center>LIST  OF  CANDIDATES  MATCHING  WITH  THE  JOB  DESCRIPTION</center></h1>
+</div>
+<br>
+     <form action="{% url 'twitter' %}" method="POST">
+         {% csrf_token %}
+          <center><input type="submit"  class="twit" value="Go to Twitter analysis"></center>
+     </form>
+<br>
+<center>
+
+    <table>
+  <tr>
+    <th class="bod">No.</th>
+    <th class="bod">Resumes</th>
+    <th class="bod">Matching</th>
+    <th class="bod"> Invitation</th>
+      <th class="bod">Link</th>
+  </tr>
+    {% for m in ls  %}
+         <tr>
+    <td>{{ forloop.counter}}</td>
+    <td>{{ m.1}}</td>
+    <td>{{ m.0 }}%</td>
+             <td><form action="{% url 'message' %}" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" name="res" value="{{ m.1 }}">
+                <br> <button type="submit" class="send" name="name" value="&ensp;&ensp;&ensp;&ensp;* New --> An interview call from {{ newd.CName}},for more information please contact to {{ newd.mobile }}.&ensp;&ensp;&ensp;&ensp;">Send</button>
+             </form></td>
+         <td>
+             <a href="/media/{{m.1}}" download>  &ensp; <div class="f"> Download file</div></a>
+         </td>
+  </tr>
+        {% endfor %}
+
+    </table>
+</center>
+<style>
+ table{
+
+	border-collapse: collapse;
+     width: 80%;
+	overflow: hidden;
+	box-shadow: white;
+    border-color: white;
+
+}
+body,td {
+	margin: 0;
+	background: white;
+	font-family: sans-serif;
+	font-weight: 100;
+    border: none;
+}
+th,
+td {
+    padding: 15px;
+    background-color: whitesmoke;
+    color: black;
+    border: none
+}
+
+.head{
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.twit
+{
+      background-color: dodgerblue;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.f {
+   color:dodgerblue;
+}
+ a:link {
+     text-decoration: none;
+ }
+
+ a:visited {
+     text-decoration: none;
+ }
+
+ a:hover {
+     text-decoration: none;
+ }
+
+ a:active {
+     text-decoration: none;
+ }
+.bod
+{
+    background-color: lightblue;
+}
+
+.send
+{
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+
+</style>
+
+
+
+
+
+
+
+    </body>
+    </head>
+    </html>
+
+{% endblock %}
+
+
+
+
+
